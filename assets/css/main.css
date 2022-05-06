@@ -390,8 +390,9 @@ textarea {
         .message::placeholder,
         .message::-webkit-input-placeholder,
         .message::-moz-placeholder,
-        .message::-moz-placeholder{
-            color: #CED4D5;
+        .message::-moz-placeholder,
+        textarea::placeholder{
+            color: red;
         }
 
 		input[type="text"]:invalid,
