@@ -163,7 +163,7 @@
 	}
 
 textarea {
-		color: #414f57;
+		color: #C02C37;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 14pt;
 		font-weight: 300;
@@ -392,7 +392,7 @@ textarea {
         .message::-moz-placeholder,
         .message::-moz-placeholder,
         textarea::placeholder{
-            color: red;
+            color: #CED4D5;
         }
 
 		input[type="text"]:invalid,
