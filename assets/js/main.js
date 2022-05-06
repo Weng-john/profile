@@ -1,4 +1,4 @@
-var url= ["https://script.google.com/macros/s/AKfycbxelSTN1z8xtjsGYkjiNjL-DijupbSyxk6fDyzFv2lGGa1qi3qY/exec", "https://script.google.com/macros/s/AKfycbzTWz3l_s9zBAJNBwtCk6vq66gGpM8IrQjPtlw8/exec"];
+var url= ["https://script.google.com/macros/s/AKfycbyrbYTKmiECXi75R7VHGu94NC_WTjGAzT8evdjMNZmF19jGACKI/exec", "https://script.google.com/macros/s/AKfycbx7lPujxZ3yqjr2UGwOM7xVvlcZZOYJd-Hkm-bsGw/exec"];
 
 function Confirm(){
     var message= document.getElementById("message").value;
@@ -18,12 +18,12 @@ function Send(message, index){
             datatype:'json',
             success: function(respond){
                 if(respond=="WA")
-                    alert("發送的訊息是錯的喔！");
+                    alert("訊息錯誤");
                 else
                     location.href= respond;
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
-                    alert("抱歉，學姊現在網路不好(;´༎ຶٹ༎ຶ`)\n等一下會重新傳送訊息~~~");
+                    alert("執行逾時，將重新傳送訊息");
                     Send(data, index+1);
             }
         });
